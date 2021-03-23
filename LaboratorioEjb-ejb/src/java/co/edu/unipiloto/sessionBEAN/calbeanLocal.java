@@ -23,7 +23,7 @@ public interface calbeanLocal {
     Integer dividir(int dval1, int dval2);
     
     Integer modulo(int mdval1, int mdval2);
-    
-    
+
+    public Integer cuadrado(int cdval1, int cdval2);
     
 }

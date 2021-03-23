@@ -35,9 +35,18 @@ public class calbean implements calbeanLocal {
         return mdval1%mdval2;
     }
     
-    
-    
-
+    public Integer cuadrado(int cdval1, int cdval2) {
+        int numsum = cdval1+cdval2;
+        
+        while(numsum>0){
+        Integer cuadrados = (int)Math.pow(numsum, numsum);
+        return cuadrados;
+        }  
+        
+        return null ;
+         
+    }
+   
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
