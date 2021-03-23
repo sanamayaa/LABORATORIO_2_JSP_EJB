@@ -57,6 +57,7 @@ public class CalcServlet extends HttpServlet {
             out.println("<h1>Multiplicacion es igual a: " + calbean.multiplicar(v1, v2) + "</h1>"); //Llama al metodo para multiplicar
             out.println("<h1>Division es igual a: " + calbean.dividir(v1, v2) + "</h1>");
             out.println("<h1>Modulo es igual a: " + calbean.modulo(v1, v2) + "</h1>");
+            out.println("<h1>El cuadrado de la suma es igual a: " + calbean.cuadrado(v1, v2) + "</h1>");
             
             out.println("</body>");
             out.println("</html>");
