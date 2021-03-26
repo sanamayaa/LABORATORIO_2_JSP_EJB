@@ -9,45 +9,46 @@ import javax.ejb.Stateless;
 
 /**
  *
- * @author SANTIAGO AMAYA
+ * @author dlpol
  */
 @Stateless
-public class calbean implements calbeanLocal {
+public class Calbean implements CalbeanLocal {
 
     @Override
     public Integer sumar(int val1, int val2) {
-        return val1+val2;
+        return (val1 + val2);
     }
     
-    public Integer restar(int rval1, int rval2) {
-        return rval1-rval2;
+    @Override
+    public Integer restar(int val1, int val2) {
+        return (val1 - val2);
+    }
+      
+    @Override
+    public Integer multiplicar(int val1, int val2) {
+        return (val1 * val2);
     }
     
-    public Integer multiplicar(int mval1, int mval2) {
-        return mval1*mval2;
+    @Override
+    public Integer dividir(int val1, int val2) {
+        return (val1 / val2);
     }
     
-    public Integer dividir(int dval1, int dval2) {
-        return dval1/dval2;
+    @Override
+    public Integer modulo(int val1, int val2) {
+        return (val1 % val2);
     }
     
-    public Integer modulo(int mdval1, int mdval2) {
-        return mdval1%mdval2;
+    @Override
+    public Integer potencia(int val1, int val2) {
+        return (int) Math.pow(val1, val2);
     }
     
-    public Integer cuadrado(int cdval1, int cdval2) {
-        int numsum = cdval1+cdval2;
-        
-        while(numsum>0){
-        Integer cuadrados = (int)Math.pow(numsum, numsum);
-        return cuadrados;
-        }  
-        
-        return null ;
-         
-    }
-   
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
+    
+   
+    
+    
 }
