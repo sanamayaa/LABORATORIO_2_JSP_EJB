@@ -5,7 +5,7 @@
  */
 package co.edu.unipiloto.servlet;
 
-import co.edu.unipiloto.sessionBEAN.calbeanLocal;
+import co.edu.unipiloto.sessionBEAN.CalcBeanLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author SANTIAGO AMAYA
+ * @author dlpol
  */
 @WebServlet(name = "CalcServlet", urlPatterns = {"/CalcServlet"})
 public class CalcServlet extends HttpServlet {
 
     @EJB
-    private calbeanLocal calbean;
+    private CalcBeanLocal calcBean;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,33 +34,72 @@ public class CalcServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-   
+    
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
+            String ecuacion=request.getParameter("ecuacion");
+            int tamaño = ecuacion.length();
+            String aux[] = new String[tamaño];
+            String operador[] = new String [tamaño];
+            int pos = 0;
+            int sum = 0;
+            int val1, val2;
+            String aux2 ="";
+            int index = 0;
+            for (int i = 0; i < tamaño; i++) {
+                if(ecuacion.charAt(i) == '+' || ecuacion.charAt(i) == '-' || ecuacion.charAt(i) == '*' || ecuacion.charAt(i) == '/' || ecuacion.charAt(i) == '%' || ecuacion.charAt(i) == '^')
+                {
+                    aux[pos] = aux2;
+                    operador[index] = String.valueOf(ecuacion.charAt(i));
+                    pos++;
+                    index++;
+                    aux2 = "";
+                }
+                else{
+                    aux2= aux2 + ecuacion.charAt(i);
+                }
+            }
+            aux[pos]=aux2;
+            pos++;
+            val1= Integer.parseInt(aux[0]) ;
+            val2= Integer.parseInt(aux[1]) ;
             
-            int v1 = Integer.parseInt(request.getParameter("valor1"));
-            int v2 = Integer.parseInt(request.getParameter("valor2"));
-         
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet CalcServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            out.println("<h1>Suma es igual a: " + calbean.sumar(v1, v2) + "</h1>"); //Llama al metodo para sumar
-            out.println("<h1>Resta es igual a: " + calbean.restar(v1, v2) + "</h1>"); //Llama al metodo para sumar
-            out.println("<h1>Multiplicacion es igual a: " + calbean.multiplicar(v1, v2) + "</h1>"); //Llama al metodo para multiplicar
-            out.println("<h1>Division es igual a: " + calbean.dividir(v1, v2) + "</h1>");
-            out.println("<h1>Modulo es igual a: " + calbean.modulo(v1, v2) + "</h1>");
-            out.println("<h1>El cuadrado de la suma es igual a: " + calbean.cuadrado(v1, v2) + "</h1>");
-            
-            out.println("</body>");
-            out.println("</html>");
+            for(int i = 0; i<pos ; i++){
+                if(operador[i].equals("+")){
+                    out.println("<h1> suma = " + calcBean.sumar(val1, val2) + "</h1>");
+                }
+                else
+                    if(operador[i].equals("-")){
+                    out.println("<h1> resta = " + calcBean.restar(val1, val2) + "</h1>");
+                    }
+                else
+                        if(operador[i].equals("*")){
+                            out.println("<h1> multipliación = " + calcBean.multiplicar(val1, val2) + "</h1>");
+                        }
+                else
+                            if(operador[i].equals("/")){
+                            out.println("<h1> división = " + calcBean.dividir(val1, val2) + "</h1>");
+                            }
+                else
+                                if(operador[i].equals("%")){
+                                    out.println("<h1> modulo = " + calcBean.modulo(val1, val2) + "</h1>");
+                                }
+                else
+                                   if(operador[i].equals("^")){
+                                       out.println("<h1> potencia = " + calcBean.potencia(val1, val2) + "</h1>");
+                                   }
+            }
             
         }
     }
