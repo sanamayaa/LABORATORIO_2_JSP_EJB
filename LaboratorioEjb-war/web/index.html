@@ -6,20 +6,37 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Calculadora</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>--> CALCULADORA</div>
-        
+        <div>Calculadora</div>
         <form action="./CalcServlet" method="POST">
-        <input type="text" name="valor1" value="" />
-        <input type="text" name="valor2" value="" />
-        <input type="submit" value="GO" />
-        
+                <input type="text" name="ecuacion" value="" />
+               
+                <br>
+                <input type="button" value="1" onClick="ecuacion.value+='1'">
+                <input type="button" value="2" onClick="ecuacion.value+='2'">
+                <input type="button" value="3" onClick="ecuacion.value+='3'">
+                <input type="button" value="+" onClick="ecuacion.value+='+'">
+                <br>
+                <input type="button" value="4" onClick="ecuacion.value+='4'">
+                <input type="button" value="5" onClick="ecuacion.value+='5'">
+                <input type="button" value="6" onClick="ecuacion.value+='6'">
+                <input type="button" value="-" onClick="ecuacion.value+='-'">
+                <br>
+                <input type="button" value="7" onClick="ecuacion.value+='7'">
+                <input type="button" value="8" onClick="ecuacion.value+='8'">
+                <input type="button" value="9" onClick="ecuacion.value+='9'">
+                <input type="button" value="*" onClick="ecuacion.value+='*'">
+                <br>
+                <input type="button" value="0" onClick="ecuacion.value+='0'">
+                <input type="button" value="/" onClick="ecuacion.value+='/'">
+                <input type="button" value="%" onClick="ecuacion.value+='%'">
+                <input type="button" value="^" onClick="ecuacion.value+='^'">
+                <input type="submit" value="=" />
         </form>
-        
         
     </body>
 </html>
