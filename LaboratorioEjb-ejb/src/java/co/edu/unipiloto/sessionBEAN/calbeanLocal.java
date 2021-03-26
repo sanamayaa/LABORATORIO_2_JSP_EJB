@@ -9,21 +9,21 @@ import javax.ejb.Local;
 
 /**
  *
- * @author SANTIAGO AMAYA
+ * @author dlpol
  */
 @Local
 public interface calbeanLocal {
 
     Integer sumar(int val1, int val2);
-    
-    Integer restar(int rval1, int rval2);
-    
-    Integer multiplicar(int mval1, int mval2);
-    
-    Integer dividir(int dval1, int dval2);
-    
-    Integer modulo(int mdval1, int mdval2);
 
-    public Integer cuadrado(int cdval1, int cdval2);
+    Integer restar(int val1, int val2);
+
+    Integer multiplicar(int val1, int val2);
+
+    Integer dividir(int val1, int val2);
+
+    Integer modulo(int val1, int val2);
+
+    Integer potencia(int val1, int val2);
     
 }
